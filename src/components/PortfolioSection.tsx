@@ -126,7 +126,7 @@ const PortfolioSection = () => {
             asChild
           >
             <a
-              href="https://wa.me/1234567890?text=Hi%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20GrowthScale%20and%20get%20a%20quote."
+              href="https://wa.me/918920183166?text=Hi%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20GrowthScale%20and%20get%20a%20quote."
               target="_blank"
               rel="noopener noreferrer"
             >
