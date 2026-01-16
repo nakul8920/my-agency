@@ -40,7 +40,7 @@ const Footer = () => {
                 <span className="font-display font-bold text-primary-foreground text-lg">N</span>
               </div> */}
               <span className="font-display font-bold text-lg sm:text-xl text-foreground">
-                Growth<span className="text-primary">Code</span>
+                Growth<span className="text-primary">Scale</span>
               </span>
             </a>
             <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 max-w-xs leading-relaxed">
@@ -120,7 +120,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-7 md:pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-3 sm:gap-4">
           <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} Growth Code. All rights reserved.
+            © {new Date().getFullYear()} Growth Scale. All rights reserved.
           </p>
         </div>
       </div>

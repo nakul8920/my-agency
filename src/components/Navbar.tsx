@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -43,11 +43,10 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/40 backdrop-blur-2xl border-b border-border/20 shadow-lg shadow-black/5"
-          : "bg-transparent backdrop-blur-none"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        ? "bg-background/40 backdrop-blur-2xl border-b border-border/20 shadow-lg shadow-black/5"
+        : "bg-transparent backdrop-blur-none"
+        }`}
       style={{
         ...(isScrolled && {
           background: "linear-gradient(to bottom, hsl(var(--background) / 0.5), hsl(var(--background) / 0.3))",
@@ -59,8 +58,8 @@ const Navbar = () => {
       <div className="w-full max-w-full">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
           {/* Logo */}
-          <a 
-            href="/" 
+          <a
+            href="/"
             onClick={(e) => {
               if (location.pathname !== "/") {
                 e.preventDefault();
@@ -73,7 +72,7 @@ const Navbar = () => {
               <span className="font-display font-bold text-primary-foreground text-sm sm:text-lg">N</span>
             </div> */}
             <span className="font-display font-bold text-base sm:text-lg md:text-xl text-foreground whitespace-nowrap">
-              <span className="hidden sm:inline">Growth</span><span className="sm:hidden">N</span><span className="text-primary">Code</span>
+              <span className="hidden sm:inline">Growth</span><span className="sm:hidden">G</span><span className="text-primary">Scale</span>
             </span>
           </a>
 
@@ -94,14 +93,16 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block flex-shrink-0">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="text-xs xl:text-sm px-3 xl:px-4 2xl:px-6 whitespace-nowrap"
-              onClick={handleCTAClick}
-            >
-              Get Free Consultation
-            </Button>
+            <a href="tel:+918287391530">
+              <Button
+                variant="hero"
+                size="lg"
+                className="text-xs xl:text-sm px-3 xl:px-4 2xl:px-6 whitespace-nowrap gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Get Free Consultation
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -140,14 +141,16 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button 
-                variant="hero" 
-                size="lg" 
-                className="mt-4"
-                onClick={handleCTAClick}
-              >
-                Get Free Consultation
-              </Button>
+              <a href="tel:+918287391530" className="mt-4">
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className="w-full gap-2"
+                >
+                  <Phone className="w-4 h-4" />
+                  Get Free Consultation
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}

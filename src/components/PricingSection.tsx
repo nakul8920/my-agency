@@ -5,52 +5,54 @@ import { Button } from "@/components/ui/button";
 const packages = [
   {
     name: "Website Only",
-    price: "$249",
-    period: "one-time",
-    description: "Perfect for businesses that need a professional online presence.",
+    tagline: "Establish Your Presence",
+    description: "Professional website development to build a strong digital foundation.",
     features: [
       "Custom Website Design",
       "Mobile Responsive",
-      "SEO Optimization",
+      "Fast Loading Speed",
+      "SEO Friendly Structure",
       "Contact Form Integration",
-      "5 Pages Included",
-      "2 Weeks Delivery",
+      "Social Media Links",
+      "2 weeks delivery",
     ],
-    cta: "Get Started",
+    cta: "Start Your Project",
     variant: "glass" as const,
+    whatsappMessage: "Hi, I am interested in the Website Only package.",
   },
   {
-    name: "Marketing Only",
-    price: "$99",
-    period: "/month",
-    description: "Boost your existing website with powerful marketing strategies.",
+    name: "Performance Marketing",
+    tagline: "Accelerate Your Traffic",
+    description: "Strategic marketing to drive qualified leads and increase visibility.",
     features: [
       "Social Media Management",
-      "Google Ads Campaign",
-      "SEO Optimization",
-      "Monthly Analytics Report",
+      "Google Ads Setup",
+      "Targeted Audience Reach",
       "Content Strategy",
-      "Email Marketing",
+      "Monthly Analytics",
+      "Brand Awareness",
     ],
-    cta: "Get Started",
+    cta: "Boost Your Traffic",
     variant: "glass" as const,
+    whatsappMessage: "Hi, I am interested in the Performance Marketing package.",
   },
   {
     name: "Complete Package",
-    price: "$400",
-    period: "/month",
-    description: "The ultimate solution for complete digital transformation.",
+    tagline: "Dominate Your Market",
+    description: "A comprehensive website + marketing solution for maximum impact.",
     features: [
-      "Everything in Website",
-      "Everything in Marketing",
+      "Everything in Launch",
+      "Everything in Growth",
       "Priority Support",
-      "Monthly Optimization",
       "Dedicated Manager",
-      "Performance Dashboard",
+      "Conversion Optimization",
+      "Quarterly Strategy Review",
+      "Priority delivery"
     ],
-    cta: "Get Started",
+    cta: "Partner With Us",
     variant: "hero" as const,
     featured: true,
+    whatsappMessage: "Hi, I am interested in the Complete Package.",
   },
 ];
 
@@ -67,13 +69,13 @@ const PricingSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
-            Pricing
+            Our Solutions
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Flexible Plans for <span className="gradient-text">Every Budget</span>
+            Choose Your path to <span className="gradient-text">Success</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Choose the package that fits your needs. All plans include our commitment to quality and results.
+            Whether you're just starting out or ready to scale, we have the right strategy for your business goals.
           </p>
         </motion.div>
 
@@ -86,33 +88,31 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`glass-card p-8 flex flex-col relative ${
-                pkg.featured
-                  ? "ring-2 ring-primary/50 md:-mt-4 md:mb-4"
-                  : ""
-              }`}
+              className={`glass-card p-8 flex flex-col relative ${pkg.featured
+                ? "ring-2 ring-primary/50 md:-mt-4 md:mb-4"
+                : ""
+                }`}
             >
               {pkg.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground bg-gradient-to-r from-primary to-blue px-4 py-1.5 rounded-full">
                     <Sparkles className="w-3 h-3" />
-                    Best Value
+                    Most Popular
                   </span>
                 </div>
               )}
 
               {/* Package Name */}
-              <h3 className="font-display text-xl font-bold mb-2">
-                {pkg.name}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-6">
-                {pkg.description}
-              </p>
-
-              {/* Price */}
               <div className="mb-6">
-                <span className="font-display text-4xl font-bold">{pkg.price}</span>
-                <span className="text-muted-foreground text-sm ml-1">{pkg.period}</span>
+                <h3 className="font-display text-2xl font-bold mb-2">
+                  {pkg.name}
+                </h3>
+                <p className="text-primary font-medium text-sm mb-3">
+                  {pkg.tagline}
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  {pkg.description}
+                </p>
               </div>
 
               {/* Features */}
@@ -128,10 +128,17 @@ const PricingSection = () => {
               </ul>
 
               {/* CTA */}
-              <Button variant={pkg.variant} className="w-full group">
-                {pkg.cta}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <a
+                href={`https://wa.me/918920183166?text=${encodeURIComponent(pkg.whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto w-full"
+              >
+                <Button variant={pkg.variant} className="w-full group">
+                  {pkg.cta}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -145,11 +152,13 @@ const PricingSection = () => {
           className="mt-12 text-center"
         >
           <p className="text-muted-foreground mb-4">
-            Need something custom? We're happy to create a tailored package for you.
+            Not sure what you need? Let's have a chat.
           </p>
-          <Button variant="outline" size="lg">
-            Request Custom Quote
-          </Button>
+          <a href="tel:+918287391530">
+            <Button variant="outline" size="lg">
+              Book a Free Strategy Call
+            </Button>
+          </a>
         </motion.div>
       </div>
     </section>

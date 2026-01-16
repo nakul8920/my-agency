@@ -1,6 +1,6 @@
-# GrowthCode - Website Development & Digital Marketing Agency
-
-A modern, responsive website for GrowthCode agency built with React, TypeScript, and Tailwind CSS. The website showcases services, portfolio, testimonials, and provides multiple pages including About Us, Careers, FAQ, Privacy Policy, and Terms of Service.
+# GrowthScale - Website Development & Digital Marketing Agency
+A modern, responsive website for GrowthScale agency built with React, TypeScript, and Tailwind CSS. The website showcases services, portfolio, testimonials, and provides multiple pages including About Us, Careers, FAQ, Privacy Policy, and Terms of Service.
+Built with ❤️ by GrowthScale
 
 ## 🚀 Features
 

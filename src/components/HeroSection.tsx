@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Terminal, Cpu, Database, Cloud } from "lucide-react";
+import { ArrowRight, Play, Terminal, Cpu, Database, Cloud, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TechBackground from "./TechBackground";
 import GlowingOrb from "./GlowingOrb";
@@ -12,7 +12,7 @@ const HeroSection = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-gradient" />
       <TechBackground variant="grid" intensity="medium" />
-      
+
       {/* Glowing Orbs */}
       <GlowingOrb size="lg" color="primary" position={{ top: "20%", left: "20%" }} />
       <GlowingOrb size="xl" color="accent" position={{ bottom: "20%", right: "20%" }} delay={2} />
@@ -52,7 +52,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-6 sm:mb-8 md:mb-10 text-balance"
             >
-              From stunning websites to powerful marketing strategies—choose what you need. 
+              From stunning websites to powerful marketing strategies—choose what you need.
               Get custom websites, SEO, social media marketing, or the complete package.
             </motion.p>
 
@@ -63,20 +63,24 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
-              <Button variant="hero" size="xl" className="group relative overflow-hidden">
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "100%" }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                />
-                Get Free Consultation
-                <ArrowRight className="transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="heroOutline" size="xl" className="group">
-                <Play className="w-4 h-4" />
-                View Services
-              </Button>
+              <a href="tel:+918287391530">
+                <Button variant="hero" size="xl" className="group relative overflow-hidden gap-2">
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  />
+                  <Phone className="w-5 h-5" />
+                  Get Free Consultation
+                </Button>
+              </a>
+              <a href="#services">
+                <Button variant="heroOutline" size="xl" className="group gap-2">
+                  <Play className="w-4 h-4" />
+                  View Services
+                </Button>
+              </a>
             </motion.div>
 
             {/* Tech Stats */}
@@ -91,8 +95,8 @@ const HeroSection = () => {
                 { value: "98%", label: "Uptime SLA", icon: "◆" },
                 { value: "5+", label: "Years Experience", icon: "●" },
               ].map((stat, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="text-center lg:text-left"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -116,11 +120,11 @@ const HeroSection = () => {
             className="hidden lg:block relative -mt-16 md:-mt-20 lg:-mt-24"
           >
             <CodeBlock className="relative z-10" />
-            
+
             {/* Decorative Elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 border border-primary/20 rounded-lg" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-accent/20 rounded-lg" />
-            
+
             {/* Connection Lines */}
             <svg className="absolute -left-12 top-1/2 -translate-y-1/2 w-12 h-24" viewBox="0 0 48 96">
               <motion.path

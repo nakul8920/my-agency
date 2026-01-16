@@ -104,7 +104,7 @@ const AboutUs = () => {
         <section className="relative overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
           <div className="absolute inset-0 hex-pattern opacity-20" />
-          
+
           <div className="container-tight relative z-10 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,7 @@ const AboutUs = () => {
                 <span className="text-xs sm:text-sm font-medium text-primary">Our Story</span>
               </motion.div>
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
-                About <span className="gradient-text">GrowthCode</span>
+                About <span className="gradient-text">GrowthScale</span>
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 We're a passionate team of developers, designers, and marketers dedicated to helping businesses thrive in the digital world.
@@ -159,14 +159,14 @@ const AboutUs = () => {
                 className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed"
               >
                 <p>
-                  GrowthCode was born in <strong className="text-foreground font-semibold">2020</strong> when two passionate 
-                  professionals, <strong className="text-foreground font-semibold">Nakul Jangra</strong> and <strong className="text-foreground font-semibold">Mohit</strong>, 
-                  came together with a shared vision: to help businesses succeed in the digital age. Starting from a small co-working 
+                  GrowthScale was born in <strong className="text-foreground font-semibold">2020</strong> when two passionate
+                  professionals, <strong className="text-foreground font-semibold">Nakul Jangra</strong> and <strong className="text-foreground font-semibold">Mohit</strong>,
+                  came together with a shared vision: to help businesses succeed in the digital age. Starting from a small co-working
                   space, they began by building websites for local businesses, always focusing on quality and client satisfaction.
                 </p>
                 <p>
-                  What started as a two-person operation quickly grew as word spread about their exceptional work. By 2021, they had 
-                  completed over 50 projects and built a reputation for delivering results. The team expanded, bringing in talented 
+                  What started as a two-person operation quickly grew as word spread about their exceptional work. By 2021, they had
+                  completed over 50 projects and built a reputation for delivering results. The team expanded, bringing in talented
                   designers, marketers, and developers who shared the same passion for excellence.
                 </p>
               </motion.div>
@@ -178,13 +178,13 @@ const AboutUs = () => {
                 className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed"
               >
                 <p>
-                  Today, GrowthCode is a thriving digital agency with a team of <strong className="text-foreground font-semibold">25+ experts</strong> serving clients 
-                  across <strong className="text-foreground font-semibold">50+ countries</strong>. We've completed over <strong className="text-foreground font-semibold">1000 projects</strong>, from small business 
+                  Today, GrowthScale is a thriving digital agency with a team of <strong className="text-foreground font-semibold">25+ experts</strong> serving clients
+                  across <strong className="text-foreground font-semibold">50+ countries</strong>. We've completed over <strong className="text-foreground font-semibold">1000 projects</strong>, from small business
                   websites to complex enterprise applications.
                 </p>
                 <p>
-                  But our core values remain the same: <strong className="text-foreground font-semibold">quality, innovation, and client success</strong>. 
-                  We're not just building websites or running campaigns - we're helping businesses achieve their dreams, reach new 
+                  But our core values remain the same: <strong className="text-foreground font-semibold">quality, innovation, and client success</strong>.
+                  We're not just building websites or running campaigns - we're helping businesses achieve their dreams, reach new
                   customers, and grow their revenue.
                 </p>
               </motion.div>
@@ -226,7 +226,7 @@ const AboutUs = () => {
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-3">
-                    Full-stack developer with extensive experience in modern web technologies. Passionate about building scalable 
+                    Full-stack developer with extensive experience in modern web technologies. Passionate about building scalable
                     solutions and leading technical innovation. Specializes in React, Node.js, and cloud architecture.
                   </p>
                   <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 pt-3 border-t border-border/50">
@@ -263,7 +263,7 @@ const AboutUs = () => {
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-3">
-                    Strategic visionary with expertise in digital marketing and business growth. Focuses on client success, 
+                    Strategic visionary with expertise in digital marketing and business growth. Focuses on client success,
                     team development, and scaling businesses through innovative marketing strategies and data-driven decisions.
                   </p>
                   <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 pt-3 border-t border-border/50">
@@ -333,7 +333,7 @@ const AboutUs = () => {
                 {/* Timeline Line */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 sm:w-1 bg-gradient-to-b from-primary via-accent to-primary transform -translate-x-1/2"></div>
                 <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary"></div>
-                
+
                 <div className="space-y-6 sm:space-y-8 md:space-y-10">
                   {milestones.map((milestone, index) => (
                     <motion.div
@@ -342,9 +342,8 @@ const AboutUs = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className={`relative flex items-start gap-3 sm:gap-4 md:gap-6 ${
-                        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                      }`}
+                      className={`relative flex items-start gap-3 sm:gap-4 md:gap-6 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                        }`}
                     >
                       {/* Timeline Dot */}
                       <div className="relative z-10 flex-shrink-0">
@@ -352,11 +351,10 @@ const AboutUs = () => {
                           <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-primary-foreground"></div>
                         </div>
                       </div>
-                      
+
                       {/* Content */}
-                      <div className={`flex-1 border border-border/50 rounded-lg sm:rounded-xl bg-card/80 backdrop-blur-sm p-4 sm:p-5 md:p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300 ${
-                        index % 2 === 0 ? "md:ml-auto md:max-w-[45%]" : "md:mr-auto md:max-w-[45%]"
-                      }`}>
+                      <div className={`flex-1 border border-border/50 rounded-lg sm:rounded-xl bg-card/80 backdrop-blur-sm p-4 sm:p-5 md:p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300 ${index % 2 === 0 ? "md:ml-auto md:max-w-[45%]" : "md:mr-auto md:max-w-[45%]"
+                        }`}>
                         <div className="text-primary font-bold text-lg sm:text-xl md:text-2xl mb-1.5">{milestone.year}</div>
                         <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold mb-2">{milestone.title}</h3>
                         <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">{milestone.description}</p>
@@ -417,13 +415,13 @@ const AboutUs = () => {
               <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">Why We Do It</h3>
               <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 <p>
-                  We believe that every business, regardless of size, deserves access to world-class digital solutions. 
-                  Our mission is to empower businesses to compete in the digital marketplace by providing them with the 
+                  We believe that every business, regardless of size, deserves access to world-class digital solutions.
+                  Our mission is to empower businesses to compete in the digital marketplace by providing them with the
                   tools, expertise, and support they need to succeed.
                 </p>
                 <p>
-                  We're not just building websites or running campaigns - we're helping businesses achieve their dreams, 
-                  reach new customers, and grow their revenue. Every project we complete is a step towards making the digital 
+                  We're not just building websites or running campaigns - we're helping businesses achieve their dreams,
+                  reach new customers, and grow their revenue. Every project we complete is a step towards making the digital
                   world more accessible and successful for everyone.
                 </p>
               </div>

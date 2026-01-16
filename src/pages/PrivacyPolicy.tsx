@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
         <section className="section-padding relative overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
           <div className="absolute inset-0 hex-pattern opacity-20" />
-          
+
           <div className="container-tight relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -143,9 +143,9 @@ const PrivacyPolicy = () => {
                 className="prose prose-lg max-w-none"
               >
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                  At GrowthCode, we are committed to protecting your privacy and ensuring the security of your personal information. 
-                  This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our 
-                  website, use our services, or interact with us. Please read this policy carefully to understand our practices 
+                  At GrowthScale, we are committed to protecting your privacy and ensuring the security of your personal information.
+                  This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our
+                  website, use our services, or interact with us. Please read this policy carefully to understand our practices
                   regarding your personal data.
                 </p>
               </motion.div>
@@ -184,8 +184,8 @@ const PrivacyPolicy = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Children's Privacy</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Our services are not directed to individuals under the age of 18. We do not knowingly collect personal 
-                  information from children. If you believe we have collected information from a child, please contact us 
+                  Our services are not directed to individuals under the age of 18. We do not knowingly collect personal
+                  information from children. If you believe we have collected information from a child, please contact us
                   immediately, and we will take steps to delete such information.
                 </p>
               </motion.div>
@@ -199,8 +199,8 @@ const PrivacyPolicy = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">International Data Transfers</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Your information may be transferred to and processed in countries other than your country of residence. 
-                  These countries may have data protection laws that differ from those in your country. We take appropriate 
+                  Your information may be transferred to and processed in countries other than your country of residence.
+                  These countries may have data protection laws that differ from those in your country. We take appropriate
                   safeguards to ensure that your information receives an adequate level of protection regardless of where it is processed.
                 </p>
               </motion.div>
@@ -214,9 +214,9 @@ const PrivacyPolicy = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Changes to This Privacy Policy</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  We may update this Privacy Policy from time to time to reflect changes in our practices, technology, 
-                  legal requirements, or other factors. We will notify you of any material changes by posting the new 
-                  Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this 
+                  We may update this Privacy Policy from time to time to reflect changes in our practices, technology,
+                  legal requirements, or other factors. We will notify you of any material changes by posting the new
+                  Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this
                   Privacy Policy periodically to stay informed about how we protect your information.
                 </p>
               </motion.div>

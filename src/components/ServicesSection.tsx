@@ -16,10 +16,11 @@ const services = [
     gradient: "from-primary to-blue",
     accentColor: "primary",
     delay: 0.1,
+    whatsappMessage: "Hi, I am interested in Website Development services.",
   },
   {
     icon: TrendingUp,
-    title: "Digital Marketing",
+    title: "Performance Marketing",
     description: "Data-driven marketing strategies that deliver measurable results and real business growth.",
     features: [
       "Search Engine Optimization",
@@ -30,6 +31,7 @@ const services = [
     gradient: "from-accent to-primary",
     accentColor: "accent",
     delay: 0.2,
+    whatsappMessage: "Hi, I am interested in Digital Marketing services.",
   },
   {
     icon: Zap,
@@ -45,6 +47,7 @@ const services = [
     accentColor: "purple",
     delay: 0.3,
     featured: true,
+    whatsappMessage: "Hi, I am interested in the Complete Growth Package.",
   },
 ];
 
@@ -53,7 +56,7 @@ const ServicesSection = () => {
     <section id="services" className="relative overflow-hidden pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
       {/* Tech Background */}
       <div className="absolute inset-0 circuit-pattern opacity-30" />
-      
+
       {/* Animated Glow */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
@@ -99,9 +102,8 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: service.delay }}
               whileHover={{ y: -8 }}
-              className={`relative glass-card p-8 flex flex-col group ${
-                service.featured ? "md:-mt-4 md:mb-4" : ""
-              }`}
+              className={`relative glass-card p-8 flex flex-col group ${service.featured ? "md:-mt-4 md:mb-4" : ""
+                }`}
             >
               {/* Animated Border */}
               <motion.div
@@ -118,7 +120,7 @@ const ServicesSection = () => {
               </div>
 
               {service.featured && (
-                <motion.span 
+                <motion.span
                   className="inline-flex items-center gap-1.5 self-start text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 px-3 py-1 rounded-full mb-4 border border-accent/30"
                   animate={{ boxShadow: ["0 0 0 0 hsl(var(--accent) / 0.4)", "0 0 0 8px hsl(var(--accent) / 0)", "0 0 0 0 hsl(var(--accent) / 0.4)"] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -127,7 +129,7 @@ const ServicesSection = () => {
                   Most Popular
                 </motion.span>
               )}
-              
+
               {/* Icon with Glow */}
               <div className="relative mb-6">
                 <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center relative z-10`}>
@@ -151,8 +153,8 @@ const ServicesSection = () => {
               {/* Features */}
               <ul className="space-y-3 mb-8 relative z-10">
                 {service.features.map((feature, featureIndex) => (
-                  <motion.li 
-                    key={featureIndex} 
+                  <motion.li
+                    key={featureIndex}
                     className="flex items-center gap-3 text-sm"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -168,15 +170,22 @@ const ServicesSection = () => {
               </ul>
 
               {/* CTA */}
-              <Button 
-                variant={service.featured ? "hero" : "glass"} 
-                className="w-full group/btn relative z-10 overflow-hidden"
+              <a
+                href={`https://wa.me/918920183166?text=${encodeURIComponent(service.whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full relative z-10"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Get Started
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </span>
-              </Button>
+                <Button
+                  variant={service.featured ? "hero" : "glass"}
+                  className="w-full group/btn overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Get Started
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </span>
+                </Button>
+              </a>
 
               {/* Data Line Decoration */}
               <motion.div

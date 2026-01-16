@@ -9,13 +9,13 @@ const sections = [
     title: "Acceptance of Terms",
     content: `By accessing and using our website or services, you accept and agree to be bound by these Terms of Service. 
     If you do not agree to these terms, please do not use our website or services. These terms constitute a legally 
-    binding agreement between you and GrowthCode. We reserve the right to modify these terms at any time, and your 
+    binding agreement between you and GrowthScale. We reserve the right to modify these terms at any time, and your 
     continued use of our services after such modifications constitutes acceptance of the updated terms.`
   },
   {
     icon: CheckCircle,
     title: "Services Description",
-    content: `GrowthCode provides digital services including but not limited to:
+    content: `GrowthScale provides digital services including but not limited to:
 
 • Website development and design
 • Web application development
@@ -139,7 +139,7 @@ const TermsOfService = () => {
         <section className="section-padding relative overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
           <div className="absolute inset-0 hex-pattern opacity-20" />
-          
+
           <div className="container-tight relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ const TermsOfService = () => {
                 <span className="gradient-text block">Service</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-3 sm:mb-4 px-2">
-                Please read these terms carefully before using our services. These terms govern your relationship with GrowthCode.
+                Please read these terms carefully before using our services. These terms govern your relationship with GrowthScale.
               </p>
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Last updated: {currentDate}
@@ -178,9 +178,9 @@ const TermsOfService = () => {
                 className="prose prose-lg max-w-none"
               >
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                  These Terms of Service ("Terms") govern your access to and use of GrowthCode's website and services. 
-                  By accessing our website or using our services, you agree to be bound by these Terms. If you disagree 
-                  with any part of these terms, you may not access or use our services. These Terms should be read in 
+                  These Terms of Service ("Terms") govern your access to and use of GrowthScale's website and services.
+                  By accessing our website or using our services, you agree to be bound by these Terms. If you disagree
+                  with any part of these terms, you may not access or use our services. These Terms should be read in
                   conjunction with our Privacy Policy.
                 </p>
               </motion.div>
@@ -219,13 +219,13 @@ const TermsOfService = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Confidentiality</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
-                  Both parties agree to maintain the confidentiality of proprietary information shared during the course of 
-                  our engagement. This includes but is not limited to business strategies, financial information, technical 
+                  Both parties agree to maintain the confidentiality of proprietary information shared during the course of
+                  our engagement. This includes but is not limited to business strategies, financial information, technical
                   details, and any other confidential information marked as such or reasonably understood to be confidential.
                 </p>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  This confidentiality obligation survives termination of our services and continues indefinitely, except 
-                  where information becomes publicly available through no breach of this agreement, is independently 
+                  This confidentiality obligation survives termination of our services and continues indefinitely, except
+                  where information becomes publicly available through no breach of this agreement, is independently
                   developed, or disclosure is required by law.
                 </p>
               </motion.div>
@@ -239,9 +239,9 @@ const TermsOfService = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Indemnification</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  You agree to indemnify, defend, and hold harmless GrowthCode, its employees, contractors, and affiliates 
-                  from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from your use 
-                  of our services, violation of these Terms, infringement of any third-party rights, or your content or materials. 
+                  You agree to indemnify, defend, and hold harmless GrowthScale, its employees, contractors, and affiliates
+                  from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from your use
+                  of our services, violation of these Terms, infringement of any third-party rights, or your content or materials.
                   This indemnification obligation survives termination of these Terms.
                 </p>
               </motion.div>
@@ -274,8 +274,8 @@ const TermsOfService = () => {
               >
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Changes to Terms</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  We reserve the right to modify these Terms at any time. Material changes will be notified through our 
-                  website or via email. Your continued use of our services after changes become effective constitutes 
+                  We reserve the right to modify these Terms at any time. Material changes will be notified through our
+                  website or via email. Your continued use of our services after changes become effective constitutes
                   acceptance of the modified Terms. If you do not agree to the changes, you must stop using our services.
                 </p>
               </motion.div>
@@ -290,23 +290,23 @@ const TermsOfService = () => {
                 <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Miscellaneous</h2>
                 <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                   <p>
-                    <strong className="text-foreground">Entire Agreement:</strong> These Terms, together with any service 
-                    agreements, constitute the entire agreement between you and GrowthCode.
+                    <strong className="text-foreground">Entire Agreement:</strong> These Terms, together with any service
+                    agreements, constitute the entire agreement between you and GrowthScale.
                   </p>
                   <p>
-                    <strong className="text-foreground">Severability:</strong> If any provision is found to be unenforceable, 
+                    <strong className="text-foreground">Severability:</strong> If any provision is found to be unenforceable,
                     the remaining provisions will remain in full effect.
                   </p>
                   <p>
-                    <strong className="text-foreground">Waiver:</strong> Failure to enforce any provision does not constitute 
+                    <strong className="text-foreground">Waiver:</strong> Failure to enforce any provision does not constitute
                     a waiver of that provision.
                   </p>
                   <p>
-                    <strong className="text-foreground">Assignment:</strong> You may not assign these Terms without our 
+                    <strong className="text-foreground">Assignment:</strong> You may not assign these Terms without our
                     written consent. We may assign our rights and obligations.
                   </p>
                   <p>
-                    <strong className="text-foreground">Force Majeure:</strong> We are not liable for delays or failures 
+                    <strong className="text-foreground">Force Majeure:</strong> We are not liable for delays or failures
                     due to circumstances beyond our reasonable control.
                   </p>
                 </div>

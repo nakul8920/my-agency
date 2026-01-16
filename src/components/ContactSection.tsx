@@ -9,14 +9,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "hello@growthcode.com",
-    href: "mailto:hello@nexusdigital.com",
+    value: "hello@growthscale.com",
+    href: "mailto:hello@growthscale.com",
   },
   {
     icon: Phone,
     label: "Call Us",
-    value: "not now",
-    href: "tel:+15551234567",
+    value: "+91 82873 91530",
+    href: "tel:+918287391530",
   },
   {
     icon: MapPin,
@@ -29,27 +29,55 @@ const contactInfo = [
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
-    service: "",
-    message: "",
+    phone: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+
+    // Name: Required, min 2 chars, letters only
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      newErrors.name = "Name can only contain letters";
+    }
+
+    // Phone: Required, 10 digits
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    if (validate()) {
+      // Handle form submission
+      console.log(formData);
+      alert("Form submitted successfully!"); // Temporary feedback
+      setFormData({ name: "", phone: "" });
+      setErrors({});
+    }
   };
 
   return (
     <section id="contact" className="section-padding relative">
       <div className="container-tight">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Column - Info */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16 sm:mb-20">
+          {/* Left Column - Header Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="text-center lg:text-left"
           >
             <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
               Get In Touch
@@ -58,52 +86,19 @@ const ContactSection = () => {
               Let's Start Your{" "}
               <span className="gradient-text">Project</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-10">
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0">
               Have a project in mind? We'd love to hear about it. Fill out the form or reach out directly through any of these channels.
             </p>
-
-            {/* Contact Info */}
-            <div className="space-y-6 mb-10">
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.href}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center group-hover:border-primary/50 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)] transition-all duration-300">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">
-                      {item.label}
-                    </div>
-                    <div className="font-medium group-hover:text-primary transition-colors">
-                      {item.value}
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* WhatsApp Button */}
-            <Button variant="accent" size="lg" className="gap-2">
-              <MessageCircle className="w-5 h-5" />
-              Chat on WhatsApp
-            </Button>
           </motion.div>
 
-          {/* Right Column - Form */}
+          {/* Right Column - Form Section */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
+            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6 shadow-xl shadow-primary/5">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Your Name</label>
@@ -115,48 +110,21 @@ const ContactSection = () => {
                     }
                     className="bg-background/50 border-border/50 focus:border-primary/50"
                   />
+                  {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Email Address</label>
+                  <label className="text-sm font-medium">Phone Number</label>
                   <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={formData.email}
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    value={formData.phone}
                     onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
+                      setFormData({ ...formData, phone: e.target.value })
                     }
                     className="bg-background/50 border-border/50 focus:border-primary/50"
                   />
+                  {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Service Interested In</label>
-                <select
-                  value={formData.service}
-                  onChange={(e) =>
-                    setFormData({ ...formData, service: e.target.value })
-                  }
-                  className="w-full h-10 px-3 rounded-xl bg-background/50 border border-border/50 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                >
-                  <option value="">Select a service</option>
-                  <option value="website">Website Development</option>
-                  <option value="marketing">Digital Marketing</option>
-                  <option value="both">Complete Package</option>
-                  <option value="custom">Custom Solution</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Project Details</label>
-                <Textarea
-                  placeholder="Tell us about your project..."
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="bg-background/50 border-border/50 focus:border-primary/50 min-h-[120px] resize-none"
-                />
               </div>
 
               <Button type="submit" variant="hero" size="lg" className="w-full group">
@@ -168,6 +136,56 @@ const ContactSection = () => {
                 We'll get back to you within 24 hours.
               </p>
             </form>
+          </motion.div>
+        </div>
+
+        {/* Contact Info Section - Bottom Centered */}
+        <div className="max-w-4xl mx-auto">
+          {/* Contact Info Cards */}
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-6 mb-10 w-full">
+            {contactInfo.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.href}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
+                className="flex flex-col items-center gap-1.5 sm:gap-4 p-2 sm:p-6 rounded-xl bg-card border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group text-center min-w-0"
+              >
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 flex-shrink-0">
+                  <item.icon className="w-3.5 h-3.5 sm:w-6 sm:h-6" />
+                </div>
+                <div className="w-full min-w-0">
+                  <div className="text-[10px] sm:text-sm font-medium text-muted-foreground mb-0.5 truncate px-1">
+                    {item.label}
+                  </div>
+                  <div className="text-[10px] sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors break-words leading-tight">
+                    {item.value}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* WhatsApp Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex justify-center"
+          >
+            <a
+              href="https://wa.me/918920183166?text=Hi%2C%20I%20have%20a%20project%20in%20mind."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="accent" size="lg" className="gap-2 h-12 px-8 text-base">
+                <MessageCircle className="w-5 h-5" />
+                Chat on WhatsApp
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
