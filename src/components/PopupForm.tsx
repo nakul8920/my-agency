@@ -1,20 +1,33 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
+import { submitToGoogleSheets } from "@/lib/googleSheets";
 
 export function PopupForm() {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState({ name: "", number: "" });
     const [errors, setErrors] = useState({ name: "", number: "" });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
-        // Show popup immediately on mount
-        setIsOpen(true);
-    }, []);
+        // Only suppress on thank you page to avoid double interaction immediate after submission
+        if (location.pathname === "/thank-you") {
+            return;
+        }
+
+        // Show popup after a very short delay, every time
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [location.pathname]);
 
     const validate = () => {
         let isValid = true;
@@ -44,13 +57,31 @@ export function PopupForm() {
         return isValid;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (validate()) {
-            console.log("Form Submitted:", formData);
-            setIsOpen(false);
-            // Optional: Store in localStorage to prevent showing again immediately
-            // localStorage.setItem("popupSeen", "true");
+        if (validate() && !isSubmitting) {
+            setIsSubmitting(true);
+            try {
+                // Submit to Google Sheets
+                const success = await submitToGoogleSheets({
+                    name: formData.name.trim(),
+                    phone: formData.number.trim(),
+                    source: 'popup',
+                });
+
+                // Navigate to thank you page
+                setFormData({ name: "", number: "" });
+                setErrors({ name: "", number: "" });
+                setIsOpen(false);
+                setIsOpen(false);
+                // Navigate to thank you page with user's name
+                navigate(`/thank-you?name=${encodeURIComponent(formData.name.trim())}`);
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                alert("Something went wrong. Please try again later.");
+            } finally {
+                setIsSubmitting(false);
+            }
         }
     };
 
@@ -177,8 +208,12 @@ export function PopupForm() {
                                 {errors.number && <p className="text-xs text-red-500">{errors.number}</p>}
                             </div>
 
-                            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 mt-2">
-                                Submit
+                            <Button
+                                type="submit"
+                                className="w-full bg-primary hover:bg-primary/90 mt-2"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? "Submitting..." : "Submit"}
                             </Button>
                         </form>
                     </div>

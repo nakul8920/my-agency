@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { submitToGoogleSheets } from "@/lib/googleSheets";
 
 const contactInfo = [
   {
@@ -27,11 +29,13 @@ const contactInfo = [
 ];
 
 const ContactSection = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -56,14 +60,29 @@ const ContactSection = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      // Handle form submission
-      console.log(formData);
-      alert("Form submitted successfully!"); // Temporary feedback
-      setFormData({ name: "", phone: "" });
-      setErrors({});
+    if (validate() && !isSubmitting) {
+      setIsSubmitting(true);
+      try {
+        // Submit to Google Sheets
+        const success = await submitToGoogleSheets({
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          source: 'contact',
+        });
+
+        // Navigate to thank you page
+        setFormData({ name: "", phone: "" });
+        setErrors({});
+        // Navigate to thank you page with user's name
+        navigate(`/thank-you?name=${encodeURIComponent(formData.name.trim())}`);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("Something went wrong. Please try again later.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -127,9 +146,15 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <Button type="submit" variant="hero" size="lg" className="w-full group">
-                Send Message
-                <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Button 
+                type="submit" 
+                variant="hero" 
+                size="lg" 
+                className="w-full group"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+                {!isSubmitting && <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
