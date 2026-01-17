@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import { submitToGoogleSheets } from "@/lib/googleSheets";
+import { trackFormSubmission } from "@/lib/analytics";
 
 export function PopupForm() {
     const navigate = useNavigate();
@@ -62,20 +63,25 @@ export function PopupForm() {
         if (validate() && !isSubmitting) {
             setIsSubmitting(true);
             try {
+                // Store name BEFORE clearing form
+                const userName = formData.name.trim();
+                
                 // Submit to Google Sheets
-                const success = await submitToGoogleSheets({
-                    name: formData.name.trim(),
+                await submitToGoogleSheets({
+                    name: userName,
                     phone: formData.number.trim(),
                     source: 'popup',
                 });
 
-                // Navigate to thank you page
+                // Track form submission
+                trackFormSubmission('popup');
+
+                // Clear form
                 setFormData({ name: "", number: "" });
                 setErrors({ name: "", number: "" });
                 setIsOpen(false);
-                setIsOpen(false);
-                // Navigate to thank you page with user's name
-                navigate(`/thank-you?name=${encodeURIComponent(formData.name.trim())}`);
+                // Navigate with stored name
+                navigate(`/thank-you?name=${encodeURIComponent(userName)}`);
             } catch (error) {
                 console.error("Error submitting form:", error);
                 alert("Something went wrong. Please try again later.");

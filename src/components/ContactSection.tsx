@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitToGoogleSheets } from "@/lib/googleSheets";
+import { trackFormSubmission } from "@/lib/analytics";
 
 const contactInfo = [
   {
@@ -65,18 +66,24 @@ const ContactSection = () => {
     if (validate() && !isSubmitting) {
       setIsSubmitting(true);
       try {
+        // Store name BEFORE clearing form
+        const userName = formData.name.trim();
+        
         // Submit to Google Sheets
-        const success = await submitToGoogleSheets({
-          name: formData.name.trim(),
+        await submitToGoogleSheets({
+          name: userName,
           phone: formData.phone.trim(),
           source: 'contact',
         });
 
-        // Navigate to thank you page
+        // Track form submission
+        trackFormSubmission('contact');
+
+        // Clear form
         setFormData({ name: "", phone: "" });
         setErrors({});
-        // Navigate to thank you page with user's name
-        navigate(`/thank-you?name=${encodeURIComponent(formData.name.trim())}`);
+        // Navigate with stored name
+        navigate(`/thank-you?name=${encodeURIComponent(userName)}`);
       } catch (error) {
         console.error("Error submitting form:", error);
         alert("Something went wrong. Please try again later.");
